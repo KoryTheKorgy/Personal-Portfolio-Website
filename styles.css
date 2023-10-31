@@ -1,7 +1,23 @@
+:root {
+  --main-white: #f0f0f0;
+  --main-red: #be3144;
+  --main-blue: #45567d;
+  --main-gray: #303841;
+  --light-blue: #86c3ff;
+  --light-red: #ee7c7c;
+}
+
 /* Base reset */
 * {
   margin: 0;
   padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 html {
@@ -14,14 +30,22 @@ html {
   font-size: 62.5%;
 }
 
+h1, h2, p {
+  color: var(--main-white);
+}
+
 h1 {
   font-size: 6rem;
 }
 
 h2 {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
+a {
+  text-decoration: none;
+  color: #f5f6f7;
+}
 @media (prefers-reduced-motion: no-preference) {
   * {
     scroll-behavior: smooth;
@@ -42,7 +66,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #86c3ff;
+  background-color: var(--light-blue);
   width: 100%;
   z-index: 10;
   overflow: hidden;
@@ -60,12 +84,23 @@ body {
 
 .navlist a {
   display: inline-block;
-  text-decoration: none;
-  color: #f5f6f7;
   font-size: 2.2rem;
   padding: 2rem;
 }
 
+.navlist a:hover {
+  background: var(--main-blue);
+}
+
+@media (max-width: 28.75em) {
+  .nav {
+    justify-content: center;
+  }
+
+  .navlist {
+    margin: 0 1rem;
+  }
+}
 /* welcome-section */
 #welcome-section {
   display: flex;
@@ -78,28 +113,161 @@ body {
   background-image: linear-gradient(62deg, #3a3d40 0%, #181719 100%);
 }
 
-#welcome-section h1 {
-  color: #f5f6f7;
-}
-
 #welcome-section p {
   font-size: 3rem;
-  color: #ee7c7c;
+  color: var(--light-red);
   font-style: italic;
 }
 
-/* welcome-section */
-#projects{
+/* projects-section */
+.projects-section{
+  text-align: center;
+  padding: 10rem 2rem;
+  background: var(--main-blue);
+}
+
+.projects-section-text {
+  margin: 0 auto 6rem auto;
+  max-width: 640px;
+  border-bottom: 0.2rem solid var(--main-white);
+}
+
+.projects-section-header {
+  color: var(--main-white);
+}
+
+.projects-section-note {
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--light-red);
+  margin-top: 0; /* Adjust this value as needed */
+  padding-top: 0; /* Adjust this value as needed */
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+
+@media (max-width: 30.625em) {
+  .projects-section {
+    padding: 6rem 1rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projects-grid img {
+  width: 100%;
+  max-width: 350px;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+}
+
+.btn-show-all {
+  font-size: 2rem;
+  background: var(--main-gray);
+  transition: background 0.3s ease-out;
+}
+
+.btn-show-all:hover {
+  background: var(--main-red);
+}
+
+.btn-show-all:hover > i {
+  transform: translateX(2px);
+}
+
+.btn-show-all > i {
+  margin-left: 10px;
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+}
+
+/* Contact section */
+
+.contact-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 100%;
-  height: 100vh;
-  background-color: #000;
-  background-image: linear-gradient(62deg, #3a3d40 0%, #181719 100%);
+  height: 80vh;
+  padding: 0 2rem;
+  background: var(--main-gray);
 }
 
-#projects h2 {
-  color: #f5f6f7;
+.contact-section-header > h2 {
+  font-size: 6rem;
+}
+
+@media (max-width: 28.75em) {
+  .contact-section-header > h2 {
+    font-size: 4rem;
+  }
+}
+
+.contact-section-header > p {
+  font-style: italic;
+  color: var(--main-white);
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 980px;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.contact-details {
+  font-size: 2.4rem;
+  text-shadow: 2px 2px 1px #1f1f1f;
+  transition: transform 0.3s ease-out;
+}
+
+.contact-details:hover {
+  transform: translateY(8px);
+}
+
+/* Footer */
+
+footer {
+  font-weight: 300;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+  background: var(--main-gray);
+  border-top: 4px solid var(--light-blue);
+}
+
+footer > p {
+  margin: 2rem;
+}
+
+footer i {
+  vertical-align: middle;
+}
+
+@media (max-width: 28.75em) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
 }
